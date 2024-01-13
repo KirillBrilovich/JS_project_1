@@ -8,17 +8,27 @@ const personalMovieDB = {
     private: false
 };
 
-// const lastFilm_1 = prompt("One of the last movies you watched?", "");
-// const rateFilm_1 = prompt("How much would you rate it?", "");
-// const lastFilm_2 = prompt("One of the last movies you watched?", "");
-// const rateFilm_2 = prompt("How much would you rate it?", "");
+for (let i = 0; i < 2; i++) {
+    const lastFilm = prompt("One of the last movies you watched?", ""),
+        rateFilm = prompt("How much would you rate it?", "");
 
-const lastFilm_1 = prompt("One of the last movies you watched?", ""),
-    rateFilm_1 = prompt("How much would you rate it?", ""),
-    lastFilm_2 = prompt("One of the last movies you watched?", ""),
-    rateFilm_2 = prompt("How much would you rate it?", "");
+    if (lastFilm != null && rateFilm != null && lastFilm != '' && rateFilm != '' && lastFilm.length < 50) {
+        personalMovieDB.movies[lastFilm] = rateFilm;
+        console.log('Done!');
+    } else {
+        console.log('error');
+        i--;
+    }
+}
 
-personalMovieDB.movies[lastFilm_1] = rateFilm_1;
-personalMovieDB.movies[lastFilm_2] = rateFilm_2;
+if (personalMovieDB.count < 10) {
+    console.log("You've watched quite a few films");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log("You are a classic viewer");
+} else if (personalMovieDB.count >= 30) {
+    console.log("You are a film buff");
+} else {
+    console.log("Error");
+}
 
 console.log(personalMovieDB);
